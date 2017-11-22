@@ -10,7 +10,7 @@
 #import "AppDelegate.h"
 #import "ToDoItem+CoreDataProperties.h"
 
-@interface AddToDoViewController ()
+@interface AddToDoViewController () <UITextFieldDelegate>
 
 @end
 
@@ -18,12 +18,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.navigationItem.hidesBackButton = YES;
+    UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(Back:)];
+    self.navigationItem.leftBarButtonItem = newBackButton;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.titleTextField.text = [defaults objectForKey:@"titleTextFieldContent"];
+    self.descriptionTextField.text = [defaults objectForKey:@"descriptionTextFieldContent"];
+    self.priorityTextField.text = [defaults objectForKey:@"priorityTextFieldContent"];
 }
 
 - (IBAction)saveNewItem:(UIButton *)sender {
     AppDelegate *appDel = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    
     ToDoItem *newTodo = [[ToDoItem alloc] initWithContext:appDel.persistentContainer.viewContext];
     newTodo.title = self.titleTextField.text;
     newTodo.todoDescription = self.descriptionTextField.text;
@@ -32,12 +39,18 @@
     newTodo.isCompleted = NO;
     newTodo.created = [[NSDate alloc] init];
     [appDel saveContext];
-    
     [self dismissViewControllerAnimated:YES completion:^{
-        
     }];
-    
 }
 
+- (IBAction)saveDefaults:(UIButton *)sender {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:self.titleTextField.text forKey:@"titleTextFieldContent"];
+    [defaults setObject:self.descriptionTextField.text forKey:@"descriptionTextFieldContent"];
+    [defaults setObject:self.priorityTextField.text forKey:@"priorityTextFieldContent"];
+}
+- (IBAction)Back:(UIBarButtonItem *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 @end
