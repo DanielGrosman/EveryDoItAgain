@@ -25,7 +25,7 @@
     [super viewDidLoad];
     
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
+    
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
     
@@ -42,7 +42,7 @@
     if (![self.fetchController performFetch:&err] || err != nil) {
         NSLog(@"Error fetching: %@", err.localizedDescription);
         abort();
-}
+    }
 }
 
 - (void)insertNewObject:(id)sender {
@@ -73,7 +73,6 @@
     return [sectionInfo numberOfObjects];
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     ToDoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
@@ -92,7 +91,7 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         NSManagedObjectContext *context = [self.fetchController managedObjectContext];
         [context deleteObject:[self.fetchController objectAtIndexPath:indexPath]];
-            
+        
         NSError *error = nil;
         if (![context save:&error]) {
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
@@ -101,12 +100,10 @@
     }
 }
 
-
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     NSManagedObject *object = [self.fetchController objectAtIndexPath:indexPath];
     cell.textLabel.text = [[object valueForKey:@"created"] description];
 }
-
 
 #pragma mark - Fetched results controller
 
@@ -115,34 +112,20 @@
     if (_fetchController != nil) {
         return _fetchController;
     }
-    
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    // Edit the entity name as appropriate.
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"ToDoItem" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
-    
-    // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
-    
-    // Edit the sort key as appropriate.
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"created" ascending:NO];
-
     [fetchRequest setSortDescriptors:@[sortDescriptor]];
-    
-    // Edit the section name key path and cache name if appropriate.
-    // nil for section name key path means "no sections".
     NSFetchedResultsController *fetchController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Master"];
     fetchController.delegate = self;
     self.fetchController = fetchController;
-    
-	NSError *error = nil;
-	if (![self.fetchController performFetch:&error]) {
-	     // Replace this implementation with code to handle the error appropriately.
-	     // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-	    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-	    abort();
-	}
-    
+    NSError *error = nil;
+    if (![self.fetchController performFetch:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
     return _fetchController;
 }    
 
