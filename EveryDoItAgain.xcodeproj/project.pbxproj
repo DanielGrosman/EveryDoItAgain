@@ -19,7 +19,6 @@
 		C0E1BB971FC5E5FD00F72BFF /* AddToDoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E1BB961FC5E5FD00F72BFF /* AddToDoViewController.m */; };
 		C0E1BB9C1FC5E9CE00F72BFF /* ToDoItem+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E1BB9A1FC5E9CE00F72BFF /* ToDoItem+CoreDataClass.m */; };
 		C0E1BB9D1FC5E9CE00F72BFF /* ToDoItem+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E1BB9B1FC5E9CE00F72BFF /* ToDoItem+CoreDataProperties.m */; };
-		C0E1BBA41FC61AA900F72BFF /* Themes.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0E1BBA31FC61AA900F72BFF /* Themes.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,7 +44,6 @@
 		C0E1BB991FC5E9CE00F72BFF /* ToDoItem+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ToDoItem+CoreDataClass.h"; sourceTree = "<group>"; };
 		C0E1BB9A1FC5E9CE00F72BFF /* ToDoItem+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ToDoItem+CoreDataClass.m"; sourceTree = "<group>"; };
 		C0E1BB9B1FC5E9CE00F72BFF /* ToDoItem+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ToDoItem+CoreDataProperties.m"; sourceTree = "<group>"; };
-		C0E1BBA31FC61AA900F72BFF /* Themes.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Themes.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +94,6 @@
 				C0E1BB9B1FC5E9CE00F72BFF /* ToDoItem+CoreDataProperties.m */,
 				C0E1BB721FC5E2AF00F72BFF /* Assets.xcassets */,
 				C0E1BB741FC5E2AF00F72BFF /* LaunchScreen.storyboard */,
-				C0E1BBA31FC61AA900F72BFF /* Themes.plist */,
 				C0E1BB771FC5E2B000F72BFF /* Info.plist */,
 				C0E1BB781FC5E2B000F72BFF /* main.m */,
 				C0E1BB661FC5E2AF00F72BFF /* EveryDoItAgain.xcdatamodeld */,
@@ -163,7 +160,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0E1BBA41FC61AA900F72BFF /* Themes.plist in Resources */,
 				C0E1BB761FC5E2AF00F72BFF /* LaunchScreen.storyboard in Resources */,
 				C0E1BB731FC5E2AF00F72BFF /* Assets.xcassets in Resources */,
 				C0E1BB711FC5E2AF00F72BFF /* Main.storyboard in Resources */,

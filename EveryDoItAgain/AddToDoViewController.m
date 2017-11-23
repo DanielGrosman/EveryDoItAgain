@@ -19,10 +19,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.hidesBackButton = YES;
-    UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(Back:)];
-    self.navigationItem.leftBarButtonItem = newBackButton;
-    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.titleTextField.text = [defaults objectForKey:@"titleTextFieldContent"];
     self.descriptionTextField.text = [defaults objectForKey:@"descriptionTextFieldContent"];
@@ -49,8 +45,7 @@
     [defaults setObject:self.descriptionTextField.text forKey:@"descriptionTextFieldContent"];
     [defaults setObject:self.priorityTextField.text forKey:@"priorityTextFieldContent"];
 }
-- (IBAction)Back:(UIBarButtonItem *)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
+
+
 
 @end
